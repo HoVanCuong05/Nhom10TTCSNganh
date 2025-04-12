@@ -374,5 +374,5 @@ select maNhaTro, avg(tienPhong)	as TrungBinhTienPhong
 from PHONG
 group by maNhaTro
 
--- lưu thay đổi xem sao 
+-- l 
 --(?)
