@@ -374,5 +374,44 @@ select maNhaTro, avg(tienPhong)	as TrungBinhTienPhong
 from PHONG
 group by maNhaTro
 
---hghjjhjjhhghjjhjjh
---(?)
+
+--(Yen)
+--Truy van NHA_TRO co ma nha tro la 'NT03'
+SELECT *
+FROM NHA_TRO
+WHERE maNhaTro = 'NT03';
+
+--Cập nhật giá tiền phòng của một phòng
+UPDATE PHONG
+SET tienPhong = 3500000
+WHERE maPhong = 'MP021';
+
+--Xóa một người thuê trọ từ bảng NGUOI_THUE_TRO
+DELETE FROM NGUOI_THUE_TRO
+WHERE maNguoiThueTro = 'NTT01';
+-- DEM
+SELECT PHONG.maNhaTro, tenNhaTro, COUNT(*) as SoLuongPhong
+FROM PHONG
+INNER JOIN NHA_TRO  ON PHONG.maNhaTro = NHA_TRO.maNhaTro
+GROUP BY PHONG.maNhaTro, tenNhaTro;
+
+--TONG
+SELECT SUM(tong_tien) as TongDoanhThu
+FROM GIAO_DICH
+WHERE YEAR(NgayGiaoDich) = '2024';
+
+--TB
+SELECT AVG(tong_tien) as TrungBinhDoanhThu
+FROM GIAO_DICH
+WHERE YEAR(NgayGiaoDich) = '2024';
+
+--BAOCAO
+SELECT 
+    MONTH(NgayGiaoDich) as Thang, 
+    SUM(tong_tien) as DoanhThu
+FROM GIAO_DICH
+WHERE YEAR(NgayGiaoDich) = '2024'
+GROUP BY MONTH(NgayGiaoDich)
+ORDER BY Thang;
+
+
